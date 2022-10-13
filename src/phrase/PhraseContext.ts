@@ -5,7 +5,7 @@ interface PhraseContext {
 }
 
 const PhraseContext = React.createContext<PhraseContext>({
-	phrase: (key: string, defaultPhrase: string) => defaultPhrase
+	phrase: (key: string, defaultPhrase: string) => defaultPhrase,
 })
 
 export default PhraseContext

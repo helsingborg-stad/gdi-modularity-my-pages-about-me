@@ -24,28 +24,16 @@ export interface Person {
 	phone?: PersonPhone
 }
 
-interface AboutMeContext {
+export interface AboutMeContextType {
 	getPerson: () => Promise<Person>,
 	updatePerson: (input: PersonInput) => Promise<Person>
 }
 
 const notImplemented = () => { throw new Error('not implemented') }
 
-const AboutMeContext = React.createContext<AboutMeContext>({
+const AboutMeContext = React.createContext<AboutMeContextType>({
 	getPerson: notImplemented,
-	updatePerson: notImplemented
+	updatePerson: notImplemented,
 })
 
 export default AboutMeContext
-/*
-type Query {
-	me: Person
-}
-type Mutation {
-	updateMe(me: PersonInput): Person
-}
-schema {
-	query: Query
-	mutation: Mutation
-}
-*/

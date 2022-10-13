@@ -1,18 +1,18 @@
-import { useContext, useState } from "react"
-import AboutMeContext, { Person } from "../about-me-service/AboutMeContext"
-import PhraseContext from "../phrase/PhraseContext"
-import PersonEditor from "./PersonEditor"
-import useAsync from "./UseAsync"
+import { useContext } from 'react'
+import AboutMeContext from '../about-me-service/AboutMeContext'
+import PhraseContext from '../phrase/PhraseContext'
+import PersonEditor from './PersonEditor'
+import useAsync from './UseAsync'
 
-export default () => {
-	const {phrase} = useContext(PhraseContext)
-	const {getPerson, updatePerson} = useContext(AboutMeContext)
+export default (): JSX.Element => {
+	const { phrase } = useContext(PhraseContext)
+	const { getPerson, updatePerson } = useContext(AboutMeContext)
 
 	const inspect = useAsync(getPerson)
 	
 	return inspect({
 		pending: () => <><span>{phrase('person_loading', 'Laddar...')}</span></>,
-		resolved: (person, update) => <PersonEditor person={person} onChange={input => update(updatePerson(input))}/>,
-		rejected: err => <span>{phrase('person_error', 'Fel...')}</span>
+		resolved: (person, _, update) => <PersonEditor person={person} onChange={input => update(updatePerson(input))}/>,
+		rejected: () => <span>{phrase('person_error', 'Fel...')}</span>,
 	})
 }
