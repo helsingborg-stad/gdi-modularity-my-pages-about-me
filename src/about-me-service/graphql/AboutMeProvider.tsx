@@ -9,7 +9,6 @@ type AboutMeProviderProps = {
 
 }
 
-
 const AboutMeProvider = ({ uri, children }: AboutMeProviderProps): JSX.Element => {
 	const provider = useMemo(() => createGqlContext(uri), [uri])
 

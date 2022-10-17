@@ -2,10 +2,12 @@ import './App.css'
 import MySettings from './about-me/MySettings'
 import AboutMeProvider from './about-me-service/graphql/AboutMeProvider'
 
-function App() {
+function App(): JSX.Element {
+	console.log(process.env)
+	const aboutMeGraphQLUri = process.env.REACT_APP_ABOUTME_GRAPHQL_URI||''
 	return (
 		<div className="App">
-			<AboutMeProvider uri='http://localhost:3000/api/v1/aboutme/graphql'>
+			<AboutMeProvider uri={aboutMeGraphQLUri}>
 				<MySettings/>
 			</AboutMeProvider>
 		</div>
