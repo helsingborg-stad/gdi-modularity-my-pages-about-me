@@ -1,7 +1,9 @@
 import React from 'react'
 
-interface PhraseContext {
-	phrase: (key: string, defaultPhrase: string) => string
+export type PhraseFn = (key: string, defaultPhrase: string) => string
+
+export interface PhraseContext {
+	phrase: PhraseFn
 }
 
 const PhraseContext = React.createContext<PhraseContext>({
