@@ -7,9 +7,9 @@ if (php_sapi_name() !== 'cli') {
 
 // Any command needed to run and build plugin assets when newly cheched out of repo.
 $buildCommands = [
-    'npm ci --no-progress',
+    'yarn --frozen-lockfile',
     'npx browserslist@latest --update-db',
-    'npm run build',
+    'yarn build',
     'composer install --prefer-dist --no-progress --no-dev',
     'composer dump-autoload --no-dev --classmap-authoritative'
 ];
@@ -71,7 +71,7 @@ function executeCommand($command)
         $liveOutput     = fread($proc, 4096);
         $completeOutput = $completeOutput . $liveOutput;
         print $liveOutput;
-        @ flush();
+        @flush();
     }
 
     pclose($proc);
