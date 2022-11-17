@@ -12,8 +12,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ifProduction, ifDevelopment } = getIfUtils(process.env.NODE_ENV);
 dotenv.config();
 
-console.log(process.env.REACT_APP_ABOUTME_GRAPHQL_URI);
-
 module.exports = {
   mode: ifProduction('production', 'development'),
     /**
