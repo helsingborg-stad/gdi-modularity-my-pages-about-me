@@ -1,10 +1,11 @@
-import './App.css'
 import MySettings from './about-me/MySettings'
 import AboutMeProvider from './about-me-service/graphql/AboutMeProvider'
 
-function App(): JSX.Element {
-	console.log(process.env)
-	const aboutMeGraphQLUri = process.env.REACT_APP_ABOUTME_GRAPHQL_URI||''
+interface Props {
+	aboutMeGraphQLUri: string;
+}
+
+function App({ aboutMeGraphQLUri } : Props): JSX.Element {
 	return (
 		<div className="App">
 			<AboutMeProvider uri={aboutMeGraphQLUri}>
