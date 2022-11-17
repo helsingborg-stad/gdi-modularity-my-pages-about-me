@@ -28,5 +28,5 @@ jobs:
     - name: Install composer dependencies.
       run: composer install
 
-    - name: Run unit tests
-      run: composer test
+    # - name: Run unit tests
+    #   run: composer test
