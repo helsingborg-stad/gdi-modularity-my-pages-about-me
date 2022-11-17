@@ -6,7 +6,7 @@
  * Description:       About me module
  * Version:           1.0.0
  * Author:            Nikolas Ramstedt @ Helsingborg Stad
- * Author URI:        https://github.com/nramstedt
+ * Author URI:        https://github.com/helsingborg-stad
  * License:           MIT
  * License URI:       https://opensource.org/licenses/MIT
  * Text Domain:       gdi-modularity-my-pages-about-me

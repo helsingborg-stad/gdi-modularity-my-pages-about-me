@@ -1,5 +1,5 @@
 {
-    "name": "nramstedt/gdi-modularity-my-pages-about-me",
+    "name": "helsingborg-stad/gdi-modularity-my-pages-about-me",
     "description": "About me module",
     "type": "wordpress-plugin",
     "license": "MIT",
@@ -10,7 +10,7 @@
     },
     "authors": [
         {
-            "name": "Nikolas Ramstedt @ Helsingborg Stad",
+            "name": "Nikolas Ramstedt",
             "email": "nikolas.ramstedt@helsingborg.se"
         }
     ],
