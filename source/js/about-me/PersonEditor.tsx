@@ -15,7 +15,8 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 	const { phrase } = useContext(PhraseContext)
 	return (
 		<Stack
-			spacing={{ xs: 2, md: 4 }}
+			spacing={{ xs: 2, md: 3 }}
+			maxWidth={'var(--container-width-content, calc(var(--base, 8px) * 76))'}
 		>
 			<div className="c-card">
 				<div className="c-card__body">
