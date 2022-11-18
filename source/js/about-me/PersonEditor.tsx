@@ -1,5 +1,5 @@
-import { Box, Button, FormControl, FormHelperText, Stack, TextField } from '@mui/material'
-import { useContext, useState } from 'react'
+import { Box, FormControl, FormHelperText, Stack, TextField } from '@mui/material'
+import React, { useContext, useState } from 'react'
 import { Person, PersonInput } from '../about-me-service/AboutMeContext'
 import PhraseContext from '../phrase/PhraseContext'
 
@@ -7,6 +7,24 @@ export type PersonEditorProps = {
 	person: Person;
 	onChange: (input: PersonInput) => void;
 };
+
+interface IconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+	name: string,
+}
+
+const Icon = ({ name, style, ...props }: IconProps) => (
+	<i 
+		className="c-icon c-icon--size-xxl material-icons" 
+		translate="no" 
+		style={{ 
+			color: 'var(--color-complementary, #f0dbd9)', 
+			width: '48px',
+			userSelect: 'none',
+			...style, 
+		}}
+		{...props}
+	>{ name }</i>
+)
 
 const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 	const { firstName, lastName, id } = person
@@ -22,10 +40,11 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 				<div className="c-card__body">
 					<div className="c-collection c-collection--unbox">
 						<div className="c-collection__item">
-							<div className="c-collection__icon u-display--none@xs u-display--none@sm">
-								<i style={{ color: 'var(--color-complementary, #f0dbd9)', width: '48px' }} className="c-icon c-icon--size-xxl material-icons" translate="no" role="img" aria-label="Icon: Undefined">
-									account_circle
-								</i>
+							<div className="c-collection__icon u-display--none@xs">
+								<Icon name={'account_circle'} style={{ 
+									color: 'var(--color-complementary, #f0dbd9)', 
+									width: '48px', 
+								}} />
 							</div>
 							<div className="c-collection__content">
 								<h2>{firstName} {lastName}</h2>
@@ -44,10 +63,11 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 					>
 						<div className="c-collection c-collection--unbox">
 							<div className="c-collection__item">
-								<div className="c-collection__icon u-display--none@xs u-display--none@sm">
-									<i style={{ color: 'var(--color-complementary, #f0dbd9)', width: '48px' }} className="c-icon c-icon--size-xxl material-icons" translate="no" role="img" aria-label="Icon: Undefined">
-										email
-									</i>
+								<div className="c-collection__icon u-display--none@xs">	
+									<Icon name={'email'} style={{ 
+										color: 'var(--color-complementary, #f0dbd9)', 
+										width: '48px', 
+									}} />								
 								</div>
 								<div className="c-collection__content">
 									<FormControl fullWidth>
@@ -66,10 +86,11 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 							</div>
 
 							<div className="c-collection__item">
-								<div className="c-collection__icon u-display--none@xs u-display--none@sm">
-									<i style={{ color: 'var(--color-complementary, #f0dbd9)', width: '48px' }} className="c-icon c-icon--size-xxl material-icons" translate="no" role="img" aria-label="Icon: Undefined">
-										phone
-									</i>
+								<div className="c-collection__icon u-display--none@xs">
+									<Icon name={'phone'} style={{ 
+										color: 'var(--color-complementary, #f0dbd9)', 
+										width: '48px', 
+									}} />				
 								</div>
 								<div className="c-collection__content">
 									<FormControl fullWidth>
@@ -89,10 +110,12 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 							</div>
 
 							<div className="c-collection__item">
-								<div className="c-collection__icon u-display--none@xs u-display--none@sm">
-									<i style={{ color: 'var(--color-complementary, #f0dbd9)', visibility: 'hidden', width: '48px' }} className="c-icon c-icon--size-xxl material-icons" translate="no" role="img" aria-label="Icon: Undefined">
-										phone
-									</i>
+								<div className="c-collection__icon u-display--none@xs">
+									<Icon name={'phone'} style={{ 
+										color: 'white', 
+										width: '48px', 
+										visibility: 'hidden',
+									}} />
 								</div>
 								<div className="c-collection__content">
 									<FormControl>
