@@ -47,8 +47,8 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 								}} />
 							</div>
 							<div className="c-collection__content">
-								<h2>{firstName} {lastName}</h2>
-								<h4>{id}</h4>
+								<h3>{firstName} {lastName}</h3>
+								<span>{id}</span>
 							</div>
 						</div>
 					</div>
@@ -119,7 +119,12 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 								</div>
 								<div className="c-collection__content">
 									<FormControl>
-										<button onClick={() => onChange({ email, phoneNumber: phone })} className="c-button c-button__filled c-button__filled--primary c-button--md" type="submit" aria-label={phrase('button_save', 'Spara')}>
+										<button
+											onClick={() => onChange({ email, phoneNumber: phone })}
+											className="c-button c-button__filled c-button__filled--primary c-button--md"
+											type="submit"
+											aria-label={phrase('button_save', 'Spara')}
+										>
 											<span className="c-button__label">
 												<span className="c-button__label-text ">
 													{phrase('button_save', 'Spara')}
