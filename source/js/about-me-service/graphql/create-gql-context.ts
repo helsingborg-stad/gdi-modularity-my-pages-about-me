@@ -43,18 +43,30 @@ const mutateMe = `
 	}
 `
 
-const gql = (uri: string, query: string, variables: object) => axios({
+const gql = (uri: string, query: string, variables: object, headers: object) => axios({
 	method: 'post',
 	url: `${uri}`,
 	data: {
 		query,
 		variables,
 	},
+	headers,
 })
 
+const tryGetAuthorizationHeaders = async () => {
+	const { token } = await window.gdiHost.getAccessToken()
+	return token ? {
+		Authorization: `Bearer ${token}`,
+	} : {}
+}
+
 export const createGqlContext = (uri: string): AboutMeContextType => ({
-	getPerson: () => gql(uri, queryMe, {})
-		.then(response => response.data?.data?.me),
-	updatePerson: (input) => gql(uri, mutateMe, { me: input })
-		.then(response => response.data?.data?.updateMe),
+	getPerson: () =>
+		tryGetAuthorizationHeaders()
+			.then(headers => gql(uri, queryMe, {}, headers))
+			.then(response => response.data?.data?.me),
+	updatePerson: (input) =>
+		tryGetAuthorizationHeaders()
+			.then(headers => gql(uri, mutateMe, { me: input }, headers))
+			.then(response => response.data?.data?.updateMe),
 })
