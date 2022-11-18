@@ -2,29 +2,15 @@ import { Box, FormControl, FormHelperText, Stack, TextField } from '@mui/materia
 import React, { useContext, useState } from 'react'
 import { Person, PersonInput } from '../about-me-service/AboutMeContext'
 import PhraseContext from '../phrase/PhraseContext'
+import { Button } from './component-lib/Button'
+import { Card, CardBody } from './component-lib/Card'
+import { Collection, CollectionContent, CollectionIcon, CollectionItem } from './component-lib/Collection'
+import { Icon } from './component-lib/Icon'
 
 export type PersonEditorProps = {
 	person: Person;
 	onChange: (input: PersonInput) => void;
 };
-
-interface IconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
-	name: string,
-}
-
-const Icon = ({ name, style, ...props }: IconProps) => (
-	<i 
-		className="c-icon c-icon--size-xxl material-icons" 
-		translate="no" 
-		style={{ 
-			color: 'var(--color-complementary, #f0dbd9)', 
-			width: '48px',
-			userSelect: 'none',
-			...style, 
-		}}
-		{...props}
-	>{ name }</i>
-)
 
 const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 	const { firstName, lastName, id } = person
@@ -36,40 +22,40 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 			spacing={{ xs: 2, md: 3 }}
 			maxWidth={'var(--container-width-content, calc(var(--base, 8px) * 76))'}
 		>
-			<div className="c-card">
-				<div className="c-card__body">
-					<div className="c-collection c-collection--unbox">
-						<div className="c-collection__item">
-							<div className="c-collection__icon u-display--none@xs">
-								<Icon name={'account_circle'} style={{ 
-									color: 'var(--color-complementary, #f0dbd9)', 
-									width: '48px', 
+			<Card>
+				<CardBody>
+					<Collection className="c-collection c-collection--unbox">
+						<CollectionItem>
+							<CollectionIcon className="c-collection__icon u-display--none@xs">
+								<Icon name={'account_circle'} style={{
+									color: 'var(--color-complementary, #f0dbd9)',
+									width: '48px',
 								}} />
-							</div>
-							<div className="c-collection__content">
+							</CollectionIcon>
+							<CollectionContent>
 								<h3>{firstName} {lastName}</h3>
 								<span>{id}</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+							</CollectionContent>
+						</CollectionItem>
+					</Collection>
+				</CardBody>
+			</Card>
 
-			<div className="c-card">
-				<div className="c-card__body">
+			<Card>
+				<CardBody>
 					<Box
 						component="form"
 						noValidate
 					>
-						<div className="c-collection c-collection--unbox">
-							<div className="c-collection__item">
-								<div className="c-collection__icon u-display--none@xs">	
-									<Icon name={'email'} style={{ 
-										color: 'var(--color-complementary, #f0dbd9)', 
-										width: '48px', 
-									}} />								
-								</div>
-								<div className="c-collection__content">
+						<Collection className="c-collection c-collection--unbox">
+							<CollectionItem>
+								<CollectionIcon className="c-collection__icon u-display--none@xs">
+									<Icon name={'email'} style={{
+										color: 'var(--color-complementary, #f0dbd9)',
+										width: '48px',
+									}} />
+								</CollectionIcon>
+								<CollectionContent>
 									<FormControl fullWidth>
 										<TextField
 											type="email"
@@ -82,17 +68,16 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 											: <FormHelperText error={true}>{phrase('email_is_unverified', 'Din email är inte verifierad')}</FormHelperText>
 										}
 									</FormControl>
-								</div>
-							</div>
-
-							<div className="c-collection__item">
-								<div className="c-collection__icon u-display--none@xs">
-									<Icon name={'phone'} style={{ 
-										color: 'var(--color-complementary, #f0dbd9)', 
-										width: '48px', 
-									}} />				
-								</div>
-								<div className="c-collection__content">
+								</CollectionContent>
+							</CollectionItem>
+							<CollectionItem>
+								<CollectionIcon className="c-collection__icon u-display--none@xs">
+									<Icon name={'phone'} style={{
+										color: 'var(--color-complementary, #f0dbd9)',
+										width: '48px',
+									}} />
+								</CollectionIcon>
+								<CollectionContent>
 									<FormControl fullWidth>
 										<TextField
 											type="tel"
@@ -106,38 +91,33 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 											: <FormHelperText error={true}>{phrase('phone_is_unverified', 'Din telefonnummer är inte verifierat')}</FormHelperText>
 										}
 									</FormControl>
-								</div>
-							</div>
-
-							<div className="c-collection__item">
-								<div className="c-collection__icon u-display--none@xs">
-									<Icon name={'phone'} style={{ 
-										color: 'white', 
-										width: '48px', 
+								</CollectionContent>
+							</CollectionItem>
+							<CollectionItem>
+								<CollectionIcon className="c-collection__icon u-display--none@xs">
+									<Icon name={'phone'} style={{
+										color: 'white',
+										width: '48px',
 										visibility: 'hidden',
 									}} />
-								</div>
-								<div className="c-collection__content">
+								</CollectionIcon>
+								<CollectionContent>
 									<FormControl>
-										<button
+										<Button
 											onClick={() => onChange({ email, phoneNumber: phone })}
 											className="c-button c-button__filled c-button__filled--primary c-button--md"
 											type="submit"
 											aria-label={phrase('button_save', 'Spara')}
 										>
-											<span className="c-button__label">
-												<span className="c-button__label-text ">
-													{phrase('button_save', 'Spara')}
-												</span>
-											</span>
-										</button>
+											{phrase('button_save', 'Spara')}
+										</Button>
 									</FormControl>
-								</div>
-							</div>
-						</div>
+								</CollectionContent>
+							</CollectionItem>
+						</Collection>
 					</Box>
-				</div>
-			</div>
+				</CardBody>
+			</Card>
 		</Stack>
 	)
 }
