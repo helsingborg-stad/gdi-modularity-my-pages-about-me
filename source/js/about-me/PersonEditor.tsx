@@ -1,123 +1,167 @@
-import { Box, FormControl, FormHelperText, Stack, TextField } from '@mui/material'
-import React, { useContext, useState } from 'react'
+import { Stack } from '@mui/material'
+import React, { ReactChild, ReactChildren, useContext, useMemo, useState } from 'react'
 import { Person, PersonInput } from '../about-me-service/AboutMeContext'
 import PhraseContext from '../phrase/PhraseContext'
-import { Button } from './component-lib/Button'
-import { Card, CardBody } from './component-lib/Card'
-import { Collection, CollectionContent, CollectionIcon, CollectionItem } from './component-lib/Collection'
-import { Icon } from './component-lib/Icon'
+import {
+	Collection,
+	CollectionContent,
+	CollectionIcon,
+	CollectionItem,
+	Icon,
+	Card,
+	CardBody,
+	Button,
+	Field,
+	Typography,
+} from '../styleguide/components'
 
 export type PersonEditorProps = {
 	person: Person;
 	onChange: (input: PersonInput) => void;
 };
 
+const CollectionWithCard = ({ children }: { children: React.ReactNode }) => (
+	<Card>
+		<CardBody>
+			<Collection className="c-collection c-collection--unbox">
+				{children}
+			</Collection>
+		</CardBody>
+	</Card>
+)
+
+const CollectionItemWithIcon = ({ icon, children }: { icon?: string, children: React.ReactNode }) => (
+	<CollectionItem>
+		<CollectionIcon className="c-collection__icon u-display--none@xs">
+			<Icon name={icon ?? 'email'} style={{
+				color: 'var(--color-complementary, #f0dbd9)',
+				width: '40px',
+				visibility: icon ? 'visible' : 'hidden',
+			}} />
+		</CollectionIcon>
+		<CollectionContent>
+			{children}
+		</CollectionContent>
+	</CollectionItem>
+)
+
 const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 	const { firstName, lastName, id } = person
+	const [ editable, setEditable ] = useState<boolean>(person?.email?.address || person?.phone?.number ? false : true)
+
+	const [ notice, setNotice ] = useState('')
 	const [ email, setEmail ] = useState(person?.email?.address || '')
 	const [ phone, setPhone ] = useState(person?.phone?.number || '')
+
 	const { phrase } = useContext(PhraseContext)
+
+	const EditButton = useMemo(() => () =>
+		!editable
+			? (
+				<Button
+					onClick={() => setEditable(true)}
+					className="c-button c-button__filled c-button__filled--primary c-button--md"
+					type="button"
+					aria-label={phrase('button_edit', 'Ändra')}
+				>
+					{phrase('button_edit', 'Ändra')}
+				</Button>
+			) 
+			: null
+	, [editable])
+
+	const SubmitButton = useMemo(() => ({ onSubmit }: { onSubmit: () => void }) =>
+		editable 
+			? (
+				<Button
+					disabled={!email && !phone && !person.email?.address && !person.phone?.number}
+					onClick={onSubmit}
+					className={
+						[
+							...!email && !phone && !person.email?.address && !person.phone?.number
+								? ['c-button__basic c-button__basic--default']
+								: ['c-button__filled c-button__filled--primary'],
+						].join(' ')
+					}
+					type="submit"
+					aria-label={phrase('button_save', 'Spara')}
+				>
+					{phrase('button_save', 'Spara')}
+				</Button>
+			) 
+			: null
+	, [ editable, email, phone, person ])
+
+	const CancelButton = useMemo(() => () =>
+		(person?.email?.address && editable || person?.phone?.number && editable)
+			? (
+				<Button
+					onClick={() => setEditable(false)}
+					className="c-button c-button__filled c-button--md"
+					type="submit"
+					aria-label={phrase('button_cancel', 'Avbryt')}
+				>
+					{phrase('button_cancel', 'Avbryt')}
+				</Button>
+			)
+			: null
+	, [ person, editable ])
+
 	return (
 		<Stack
 			spacing={{ xs: 2, md: 3 }}
 			maxWidth={'var(--container-width-content, calc(var(--base, 8px) * 76))'}
 		>
-			<Card>
-				<CardBody>
-					<Collection className="c-collection c-collection--unbox">
-						<CollectionItem>
-							<CollectionIcon className="c-collection__icon u-display--none@xs">
-								<Icon name={'account_circle'} style={{
-									color: 'var(--color-complementary, #f0dbd9)',
-									width: '48px',
-								}} />
-							</CollectionIcon>
-							<CollectionContent>
-								<h3>{firstName} {lastName}</h3>
-								<span>{id}</span>
-							</CollectionContent>
-						</CollectionItem>
-					</Collection>
-				</CardBody>
-			</Card>
+			<CollectionWithCard>
+				<CollectionItemWithIcon icon={'account_circle'}>
+					<Typography variant={'h3'}>
+						{firstName} {lastName}
+					</Typography>
+					<Typography variant={'p'}>
+						{id}
+					</Typography>
+				</CollectionItemWithIcon>
+			</CollectionWithCard>
 
-			<Card>
-				<CardBody>
-					<Box
-						component="form"
-						noValidate
-					>
-						<Collection className="c-collection c-collection--unbox">
-							<CollectionItem>
-								<CollectionIcon className="c-collection__icon u-display--none@xs">
-									<Icon name={'email'} style={{
-										color: 'var(--color-complementary, #f0dbd9)',
-										width: '48px',
-									}} />
-								</CollectionIcon>
-								<CollectionContent>
-									<FormControl fullWidth>
-										<TextField
-											type="email"
-											label={phrase('email_placeholder', 'Email')}
-											placeholder={phrase('email_placeholder', 'Email')}
-											value={email}
-											onChange={e => setEmail(e.target.value)} />
-										{person?.email?.isVerified
-											? <FormHelperText>{phrase('email_is_verified', 'Din email är verifierad')}</FormHelperText>
-											: <FormHelperText error={true}>{phrase('email_is_unverified', 'Din email är inte verifierad')}</FormHelperText>
-										}
-									</FormControl>
-								</CollectionContent>
-							</CollectionItem>
-							<CollectionItem>
-								<CollectionIcon className="c-collection__icon u-display--none@xs">
-									<Icon name={'phone'} style={{
-										color: 'var(--color-complementary, #f0dbd9)',
-										width: '48px',
-									}} />
-								</CollectionIcon>
-								<CollectionContent>
-									<FormControl fullWidth>
-										<TextField
-											type="tel"
-											label={phrase('phone_placeholder', 'Telefon')}
-											placeholder={phrase('phone_placeholder', 'Telefon')}
-											value={phone}
-											onChange={e => setPhone(e.target.value)} />
-
-										{person?.phone?.isVerified
-											? <FormHelperText>{phrase('phone_is_verified', 'Ditt telefonnummer är verifierat')}</FormHelperText>
-											: <FormHelperText error={true}>{phrase('phone_is_unverified', 'Din telefonnummer är inte verifierat')}</FormHelperText>
-										}
-									</FormControl>
-								</CollectionContent>
-							</CollectionItem>
-							<CollectionItem>
-								<CollectionIcon className="c-collection__icon u-display--none@xs">
-									<Icon name={'phone'} style={{
-										color: 'white',
-										width: '48px',
-										visibility: 'hidden',
-									}} />
-								</CollectionIcon>
-								<CollectionContent>
-									<FormControl>
-										<Button
-											onClick={() => onChange({ email, phoneNumber: phone })}
-											className="c-button c-button__filled c-button__filled--primary c-button--md"
-											type="submit"
-											aria-label={phrase('button_save', 'Spara')}
-										>
-											{phrase('button_save', 'Spara')}
-										</Button>
-									</FormControl>
-								</CollectionContent>
-							</CollectionItem>
-						</Collection>
-					</Box>
-				</CardBody>
-			</Card>
+			<CollectionWithCard>
+				<CollectionItemWithIcon icon={'email'}>
+					<Field
+						type="email"
+						name="email"
+						label={phrase('email_placeholder', 'Email')}
+						placeholder={phrase('email_placeholder', 'Email')}
+						value={!editable && !email ? '-' : email}
+						onChange={e => setEmail(e.target.value)}
+						readOnly={!editable}
+						helperText={
+							!editable && email && !person?.email?.isVerified
+								? phrase('email_is_verified', 'Din email är inte verifierad')
+								: undefined
+						}
+					/>
+				</CollectionItemWithIcon>
+				<CollectionItemWithIcon icon={'phone'}>
+					<Field
+						type="tel"
+						name="phone"
+						label={phrase('phone_placeholder', 'Phone')}
+						placeholder={phrase('phone_placeholder', 'Phonenumber')}
+						value={!editable && !phone ? '-' : phone}
+						onChange={e => setPhone(e.target.value)}
+						readOnly={!editable}
+						helperText={
+							!editable && phone && !person?.phone?.isVerified
+								? phrase('phone_is_unverified', 'Ditt telefonnummer är inte verifierat')
+								: undefined
+						}
+					/>
+				</CollectionItemWithIcon>
+				<CollectionItemWithIcon>
+					<EditButton />
+					<SubmitButton onSubmit={() => onChange({ email, phoneNumber: phone })} />
+					<CancelButton />
+				</CollectionItemWithIcon>
+			</CollectionWithCard>
 		</Stack>
 	)
 }
