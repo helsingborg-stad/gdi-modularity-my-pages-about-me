@@ -1,0 +1,14 @@
+.c-field .c-field__helper {
+	margin-left: 0;
+	margin-top: 0;
+}
+
+.c-field.c-field--readonly .c-field__inner {
+	background: initial;
+	border: 0;
+}
+
+.c-field.c-field--readonly .c-field__inner input {
+	padding: 0;
+	height: calc(var(--base, 8px) * 4);
+}

@@ -3,6 +3,7 @@ import AboutMeContext, { Person } from '../about-me-service/AboutMeContext'
 import PhraseContext, { PhraseFn } from '../phrase/PhraseContext'
 import PersonEditor from './PersonEditor'
 import useAsync from './UseAsync'
+import './styles.css'
 
 type State = 'loading'|'saving'
 
