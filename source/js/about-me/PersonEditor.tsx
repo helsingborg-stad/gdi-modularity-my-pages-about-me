@@ -1,45 +1,15 @@
 import { Stack } from '@mui/material'
-import React, { ReactChild, ReactChildren, useContext, useMemo, useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { Person, PersonInput } from '../about-me-service/AboutMeContext'
 import PhraseContext from '../phrase/PhraseContext'
 import {
-	Collection,
-	CollectionContent,
-	CollectionIcon,
-	CollectionItem,
-	Icon,
-	Card,
-	CardBody,
 	Button,
 	Field,
 	Typography,
 } from '../styleguide/components'
 import { ShowIf } from '../styleguide/utils/ShowIf'
-
-const CollectionWithCard = ({ children }: { children: React.ReactNode }) => (
-	<Card>
-		<CardBody>
-			<Collection className="c-collection c-collection--unbox">
-				{children}
-			</Collection>
-		</CardBody>
-	</Card>
-)
-
-const CollectionItemWithIcon = ({ icon, children }: { icon?: string, children: React.ReactNode }) => (
-	<CollectionItem>
-		<CollectionIcon className="c-collection__icon u-display--none@xs">
-			<Icon name={icon ?? 'email'} size={'lg'} style={{
-				color: 'var(--color-complementary, #f0dbd9)',
-				width: '40px',
-				visibility: icon ? 'visible' : 'hidden',
-			}} />
-		</CollectionIcon>
-		<CollectionContent>
-			{children}
-		</CollectionContent>
-	</CollectionItem>
-)
+import { CollectionItemWithIcon } from './CollectionItemWithIcon'
+import { CollectionWithCard } from './CollectionWithCard'
 
 export type PersonEditorProps = {
 	person?: Person;
@@ -135,12 +105,7 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 							</div>
 
 							<Button
-								disabled={!email && !phone && !person?.email?.address && !person?.phone?.number}
-								onClick={() => {
-									if (formRef.current?.reportValidity()) {
-										onChange({ email, phoneNumber: phone })
-									}
-								}}
+								onClick={() => formRef.current?.reportValidity() && onChange({ email, phoneNumber: phone })}
 								color="primary"
 								type="submit"
 								aria-label={phrase('button_save', 'Spara')}
