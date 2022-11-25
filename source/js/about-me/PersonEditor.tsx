@@ -14,11 +14,7 @@ import {
 	Field,
 	Typography,
 } from '../styleguide/components'
-
-export type PersonEditorProps = {
-	person: Person;
-	onChange: (input: PersonInput) => void;
-};
+import { ShowIf } from '../styleguide/utils/ShowIf'
 
 const CollectionWithCard = ({ children }: { children: React.ReactNode }) => (
 	<Card>
@@ -33,7 +29,7 @@ const CollectionWithCard = ({ children }: { children: React.ReactNode }) => (
 const CollectionItemWithIcon = ({ icon, children }: { icon?: string, children: React.ReactNode }) => (
 	<CollectionItem>
 		<CollectionIcon className="c-collection__icon u-display--none@xs">
-			<Icon name={icon ?? 'email'} style={{
+			<Icon name={icon ?? 'email'} size={'lg'} style={{
 				color: 'var(--color-complementary, #f0dbd9)',
 				width: '40px',
 				visibility: icon ? 'visible' : 'hidden',
@@ -45,60 +41,20 @@ const CollectionItemWithIcon = ({ icon, children }: { icon?: string, children: R
 	</CollectionItem>
 )
 
-const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
-	const { firstName, lastName, id } = person
-	const [ editable, setEditable ] = useState<boolean>(person?.email?.address || person?.phone?.number ? false : true)
+export type PersonEditorProps = {
+	person?: Person;
+	hasBeenSaved?: boolean;
+	onChange: (input: PersonInput) => void;
+};
 
-	const [ notice, setNotice ] = useState('')
+const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
+	const { firstName, lastName, id } = person || { firstName: '', lastName: '', id: '' }
+	
+	const [ editable, setEditable ] = useState<boolean>(false)
 	const [ email, setEmail ] = useState(person?.email?.address || '')
 	const [ phone, setPhone ] = useState(person?.phone?.number || '')
 
 	const { phrase } = useContext(PhraseContext)
-
-	const EditButton = useMemo(() => () =>
-		!editable
-			? (
-				<Button
-					onClick={() => setEditable(true)}
-					type="button"
-					color="primary"
-					aria-label={phrase('button_edit', 'Ändra')}
-				>
-					{phrase('button_edit', 'Ändra')}
-				</Button>
-			) 
-			: null
-	, [editable])
-
-	const SubmitButton = useMemo(() => ({ onSubmit }: { onSubmit: () => void }) =>
-		editable 
-			? (
-				<Button
-					disabled={!email && !phone && !person.email?.address && !person.phone?.number}
-					onClick={onSubmit}
-					color="primary"
-					type="submit"
-					aria-label={phrase('button_save', 'Spara')}
-				>
-					{phrase('button_save', 'Spara')}
-				</Button>
-			) 
-			: null
-	, [ editable, email, phone, person ])
-
-	const CancelButton = useMemo(() => () =>
-		(person?.email?.address && editable || person?.phone?.number && editable)
-			? (
-				<Button
-					onClick={() => setEditable(false)}
-					type="submit"
-					aria-label={phrase('button_cancel', 'Avbryt')}
-				>
-					{phrase('button_cancel', 'Avbryt')}
-				</Button>
-			)
-			: null
-	, [ person, editable ])
 
 	return (
 		<Stack
@@ -115,7 +71,6 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 					</Typography>
 				</CollectionItemWithIcon>
 			</CollectionWithCard>
-
 			<CollectionWithCard>
 				<CollectionItemWithIcon icon={'email'}>
 					<Field
@@ -150,9 +105,50 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 					/>
 				</CollectionItemWithIcon>
 				<CollectionItemWithIcon>
-					<EditButton />
-					<SubmitButton onSubmit={() => onChange({ email, phoneNumber: phone })} />
-					<CancelButton />
+
+					<ShowIf condition={editable}>
+						<div className="u-margin__bottom--3">
+							<Typography variant="p">
+								{phrase('phone_is_unverified', 'Dina kontaktuppgifter användas endast med förvaltningar och bolag inom Helsingborg Stad och endast när du valt att nyttja en tjänst. Du kan själv ändra dina inställningar när du vill.')}
+							</Typography>
+							<Typography variant="p" className="u-margin__top--2">
+								{phrase('phone_is_unverified', 'När jag sparar mina uppgifter godkänner jag att dessa uppgifter används av Helsingborg Stad. Du hittar information om hur Helsingborgs stad behandlar personuppgifter.')}
+							</Typography>
+						</div>
+
+						<Button
+							disabled={!email && !phone && !person?.email?.address && !person?.phone?.number}
+							onClick={() => onChange({ email, phoneNumber: phone })}
+							color="primary"
+							type="submit"
+							aria-label={phrase('button_save', 'Spara')}
+						>
+							{phrase('button_save', 'Spara')}
+						</Button>
+
+						<ShowIf condition={(person?.email?.address || person?.phone?.number) ? true : false}>
+							<Button
+								onClick={() => setEditable(false)}
+								type="submit"
+								aria-label={phrase('button_cancel', 'Avbryt')}
+							>
+								{phrase('button_cancel', 'Avbryt')}
+							</Button>		
+						</ShowIf>
+					</ShowIf>
+					
+					<ShowIf condition={!editable}>
+						<Button
+							onClick={() => {
+								setEditable(true) 
+							}}
+							type="button"
+							color="primary"
+							aria-label={phrase('button_edit', 'Ändra')}
+						>
+							{phrase('button_edit', 'Ändra')}
+						</Button>
+					</ShowIf>
 				</CollectionItemWithIcon>
 			</CollectionWithCard>
 		</Stack>

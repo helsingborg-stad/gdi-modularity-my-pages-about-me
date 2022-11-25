@@ -4,23 +4,28 @@ import PhraseContext, { PhraseFn } from '../phrase/PhraseContext'
 import PersonEditor from './PersonEditor'
 import useAsync from './UseAsync'
 import './styles.css'
+import { Button } from '../styleguide/components'
 
-type State = 'loading'|'saving'
+// type State = 'loading'|'saving'
 
-const PendingElements: Record<State, (phrase: PhraseFn) => JSX.Element> = {
-	loading: phrase => <span>{phrase('person_loading', 'Laddar...')}</span>,
-	saving: phrase => <span>{phrase('person_saving', 'Sparar...')}</span>,
-} 
+interface State {
+	person?: Person
+	isSaving: boolean
+}
 
 export default (): JSX.Element => {
 	const { phrase } = useContext(PhraseContext)
 	const { getPerson, updatePerson } = useContext(AboutMeContext)
 
-	const inspect = useAsync<Person, State>(getPerson, 'loading')
+	const inspect = useAsync<Person, State>(getPerson, { isSaving: false })
 	
 	return inspect({
-		pending: (state) => PendingElements[state](phrase),
-		resolved: (person, _, update) => <PersonEditor person={person} onChange={input => update(updatePerson(input), 'loading')}/>,
-		rejected: () => <span>{phrase('person_error', 'Fel...')}</span>,
+		pending: (state) => <PersonEditor key="pending" person={state?.person} onChange={(p) => p} />,
+		resolved: (person, _, update) => <PersonEditor key="resolved" person={person} onChange={input => update(updatePerson(input), { isSaving: true, person })}/>,
+		rejected: (err, state, update) => (
+			<div>
+				<Button onClick={() => update(getPerson(), { isSaving: false })}>Något gick fel, försök igen</Button>
+			</div>
+		),
 	})
 }
