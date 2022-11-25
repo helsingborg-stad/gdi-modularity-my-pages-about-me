@@ -126,15 +126,15 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 							{phrase('button_save', 'Spara')}
 						</Button>
 
-						<ShowIf condition={(person?.email?.address || person?.phone?.number) ? true : false}>
-							<Button
-								onClick={() => setEditable(false)}
-								type="submit"
-								aria-label={phrase('button_cancel', 'Avbryt')}
-							>
-								{phrase('button_cancel', 'Avbryt')}
-							</Button>		
-						</ShowIf>
+
+						<Button
+							onClick={() => setEditable(false)}
+							type="submit"
+							aria-label={phrase('button_cancel', 'Avbryt')}
+						>
+							{phrase('button_cancel', 'Avbryt')}
+						</Button>		
+
 					</ShowIf>
 					
 					<ShowIf condition={!editable}>
