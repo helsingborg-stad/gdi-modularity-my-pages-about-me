@@ -32,8 +32,13 @@ class AboutMe extends \Modularity\Module
 	public function script()
 	{
 		wp_enqueue_script(
-			'gdi-modularity-about-me',
+			'gdi-modularity-about-me-js',
 			GDI_ABOUT_ME_URL . '/dist/' . CacheBust::name('js/gdi-modularity-about-me.js'),
+			null
+		);
+		wp_enqueue_style(
+			'gdi-modularity-about-me-css',
+			GDI_ABOUT_ME_URL . '/dist/' . CacheBust::name('js/gdi-modularity-about-me.css'),
 			null
 		);
 	}
