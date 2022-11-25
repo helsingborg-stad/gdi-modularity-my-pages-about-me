@@ -45,13 +45,14 @@ export type PersonEditorProps = {
 	person?: Person;
 	hasBeenSaved?: boolean;
 	onChange: (input: PersonInput) => void;
+	onCancel: () => void;
 };
 
-const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
+const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.Element => {
 	const { firstName, lastName, id } = person || { firstName: '', lastName: '', id: '' }
 
 	const formRef = useRef<HTMLFormElement>(null)
-
+	
 	const [ editable, setEditable ] = useState<boolean>(false)
 	const [ email, setEmail ] = useState(person?.email?.address || '')
 	const [ phone, setPhone ] = useState(person?.phone?.number || '')
@@ -148,7 +149,7 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 							</Button>
 
 							<Button
-								onClick={() => setEditable(false)}
+								onClick={onCancel}
 								type="submit"
 								aria-label={phrase('button_cancel', 'Avbryt')}
 							>
