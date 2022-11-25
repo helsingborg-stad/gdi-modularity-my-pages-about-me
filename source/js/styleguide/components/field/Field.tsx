@@ -3,8 +3,8 @@ import React, { ChangeEventHandler, FocusEventHandler, HTMLInputTypeAttribute } 
 
 interface Props {
 	value: string
-	label: string
 	name: string
+	label?: string
 	onChange: ChangeEventHandler<HTMLInputElement>
 	onBlur?: FocusEventHandler<HTMLInputElement>
 	onFocus?: FocusEventHandler<HTMLInputElement>
@@ -46,9 +46,12 @@ const Field = ({
 
 	return (
 		<div {...props} className={classNames}>
-			<label className="c-field__label" htmlFor={name}>
-				{label}
-			</label>
+			
+			{label && (
+				<label className="c-field__label" htmlFor={name}>
+					{label}
+				</label>
+			)}
 			<div className="c-field__inner">
 				<input
 					id={name}
