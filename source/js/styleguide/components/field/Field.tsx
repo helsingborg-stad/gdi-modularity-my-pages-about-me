@@ -11,28 +11,28 @@ interface Props {
 	type?: HTMLInputTypeAttribute
 	error?: boolean
 	valid?: boolean
-	helperText?: string|JSX.Element
+	helperText?: string | JSX.Element
 	readOnly?: boolean
 	required?: boolean
 	placeholder?: string
 	inputProps?: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 }
 
-const Field = ({ 
-	value, 
-	onChange, 
+const Field = ({
+	value,
+	onChange,
 	onBlur,
 	onFocus,
-	label, 
-	name, 
-	type, 
-	error,  
-	valid,  
-	helperText, 
+	label,
+	name,
+	type,
+	error,
+	valid,
+	helperText,
 	required,
 	readOnly: readOnly,
-	placeholder = '', 
-	inputProps = {}, 
+	placeholder = '',
+	inputProps = {},
 	...props
 }:
 	Props
@@ -46,7 +46,7 @@ const Field = ({
 
 	return (
 		<div {...props} className={classNames}>
-			
+
 			{label && (
 				<label className="c-field__label" htmlFor={name}>
 					{label}
