@@ -60,8 +60,8 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 			? (
 				<Button
 					onClick={() => setEditable(true)}
-					className="c-button c-button__filled c-button__filled--primary c-button--md"
 					type="button"
+					color="primary"
 					aria-label={phrase('button_edit', 'Ändra')}
 				>
 					{phrase('button_edit', 'Ändra')}
@@ -76,13 +76,7 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 				<Button
 					disabled={!email && !phone && !person.email?.address && !person.phone?.number}
 					onClick={onSubmit}
-					className={
-						[
-							...!email && !phone && !person.email?.address && !person.phone?.number
-								? ['c-button__basic c-button__basic--default']
-								: ['c-button__filled c-button__filled--primary'],
-						].join(' ')
-					}
+					color="primary"
 					type="submit"
 					aria-label={phrase('button_save', 'Spara')}
 				>
@@ -97,7 +91,6 @@ const PersonEditor = ({ person, onChange }: PersonEditorProps): JSX.Element => {
 			? (
 				<Button
 					onClick={() => setEditable(false)}
-					className="c-button c-button__filled c-button--md"
 					type="submit"
 					aria-label={phrase('button_cancel', 'Avbryt')}
 				>
