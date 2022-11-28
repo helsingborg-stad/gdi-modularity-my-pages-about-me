@@ -24,8 +24,8 @@ yarn watch
 # activate wordpress plugin (using wp-cli)
 wp plugin activate gdi-modularity-my-pages-about-me --url=example.local
 
-# configure graphql endpoint (using wp-cli)
-wp option update options_about_me_graphql_uri http://localhost:3000/api/v1/aboutme/graphql --url=example.local
+# configure api endpoint (using wp-cli)
+wp option update options_about_me_api_uri http://localhost:3000/api/v1/aboutme --url=example.local
 
 ```
 
