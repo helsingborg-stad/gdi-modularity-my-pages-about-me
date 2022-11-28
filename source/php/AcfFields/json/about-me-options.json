@@ -17,6 +17,21 @@
             },
             "default_value": "",
             "placeholder": "http:\/\/example\/api\/v1\/aboutme"
+        },
+        {
+            "key": "field_6384a6d06cce7",
+            "label": "After Verification Redirect Url",
+            "name": "about_me_after_verification_redirect_url",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url"
         }
     ],
     "location": [

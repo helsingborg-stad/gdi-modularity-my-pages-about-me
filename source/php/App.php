@@ -53,7 +53,7 @@ class App
         $response = json_decode($request, true);
 
         if (!empty($response['verified'])) {
-            wp_redirect(home_url());
+            wp_redirect(get_field('about_me_after_verification_redirect_url', 'options') ?? home_url());
             exit();
         }
     }

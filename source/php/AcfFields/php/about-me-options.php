@@ -21,6 +21,21 @@
             'default_value' => '',
             'placeholder' => __('http://example/api/v1/aboutme', 'gdi-modularity-my-pages-about-me'),
         ),
+        1 => array(
+            'key' => 'field_6384a6d06cce7',
+            'label' => __('After Verification Redirect Url', 'gdi-modularity-my-pages-about-me'),
+            'name' => 'about_me_after_verification_redirect_url',
+            'type' => 'link',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'return_format' => 'url',
+        ),
     ),
     'location' => array(
         0 => array(
