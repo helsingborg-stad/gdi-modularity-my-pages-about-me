@@ -20,7 +20,7 @@ class AboutMe extends \Modularity\Module
 	public function data(): array
 	{
 		return [
-			'aboutMeGraphQLUri' => get_field('about_me_graphql_uri', 'options')
+			'aboutMeGraphQLUri' => get_field('about_me_api_uri', 'options') . '/graphql'
 		];
 	}
 

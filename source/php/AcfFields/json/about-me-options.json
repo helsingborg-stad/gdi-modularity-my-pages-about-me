@@ -3,22 +3,6 @@
     "title": "Plugin: About Me",
     "fields": [
         {
-            "key": "field_637368ed86941",
-            "label": "About Me GraphQL Uri",
-            "name": "about_me_graphql_uri",
-            "type": "url",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "http:\/\/example\/api\/v1\/aboutme\/graphql"
-        },
-        {
             "key": "field_6384881254f3f",
             "label": "About Me API Uri",
             "name": "about_me_api_uri",

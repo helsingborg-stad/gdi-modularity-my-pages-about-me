@@ -6,22 +6,6 @@
     'title' => __('Plugin: About Me', 'gdi-modularity-my-pages-about-me'),
     'fields' => array(
         0 => array(
-            'key' => 'field_637368ed86941',
-            'label' => __('About Me GraphQL Uri', 'gdi-modularity-my-pages-about-me'),
-            'name' => 'about_me_graphql_uri',
-            'type' => 'url',
-            'instructions' => '',
-            'required' => 1,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'default_value' => '',
-            'placeholder' => __('http://example/api/v1/aboutme/graphql', 'gdi-modularity-my-pages-about-me'),
-        ),
-        1 => array(
             'key' => 'field_6384881254f3f',
             'label' => __('About Me API Uri', 'gdi-modularity-my-pages-about-me'),
             'name' => 'about_me_api_uri',
