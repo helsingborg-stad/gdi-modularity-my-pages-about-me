@@ -1,4 +1,3 @@
-import React from 'react'
 import { useMemo } from 'react'
 import AboutMeContext from '../AboutMeContext'
 import { createGqlContext } from './create-gql-context'
