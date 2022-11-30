@@ -57,7 +57,7 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 							readOnly={!editable}
 							helperText={
 								!editable && email && !person?.email?.isVerified
-									? phrase('email_is_verified', 'Din email är inte verifierad')
+									? phrase('email_is_verified', 'Your email is not verified')
 									: undefined
 							}
 						/>
@@ -73,7 +73,7 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 							readOnly={!editable}
 							helperText={
 								!editable && phone && !person?.phone?.isVerified
-									? phrase('phone_is_unverified', 'Ditt telefonnummer är inte verifierat')
+									? phrase('phone_is_unverified', 'Your phone number is not verified.')
 									: undefined
 							}
 							inputProps={{
@@ -89,9 +89,9 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 								}}
 								type="button"
 								color="primary"
-								aria-label={phrase('button_edit', 'Ändra')}
+								aria-label={phrase('button_edit', 'Edit')}
 							>
-								{phrase('button_edit', 'Ändra')}
+								{phrase('button_edit', 'Edit')}
 							</Button>
 						</ShowIf>
 						<ShowIf condition={editable}>
@@ -104,17 +104,17 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 								onClick={() => formRef.current?.reportValidity() && onChange({ email, phoneNumber: phone })}
 								color="primary"
 								type="submit"
-								aria-label={phrase('button_save', 'Spara')}
+								aria-label={phrase('button_save', 'Save')}
 							>
-								{phrase('button_save', 'Spara')}
+								{phrase('button_save', 'Save')}
 							</Button>
 
 							<Button
 								onClick={onCancel}
 								type="submit"
-								aria-label={phrase('button_cancel', 'Avbryt')}
+								aria-label={phrase('button_cancel', 'Cancel')}
 							>
-								{phrase('button_cancel', 'Avbryt')}
+								{phrase('button_cancel', 'Cancel')}
 							</Button>
 						</ShowIf>
 					</CollectionItemWithIcon>
