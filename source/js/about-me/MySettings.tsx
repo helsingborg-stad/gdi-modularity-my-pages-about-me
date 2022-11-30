@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import AboutMeContext, { Person } from '../about-me-service/AboutMeContext'
-import PhraseContext, { PhraseFn } from '../phrase/PhraseContext'
 import PersonEditor from './PersonEditor'
 import useAsync from './UseAsync'
 import './styles.css'
@@ -12,7 +11,6 @@ interface State {
 }
 
 export default (): JSX.Element => {
-	const { phrase } = useContext(PhraseContext)
 	const { getPerson, updatePerson } = useContext(AboutMeContext)
 
 	const inspect = useAsync<Person, State>(getPerson, { isSaving: false })
@@ -22,7 +20,7 @@ export default (): JSX.Element => {
 			<PersonEditor 
 				key="pending" 
 				person={state?.person} 
-				onCancel={() => {}} 
+				onCancel={() => ''} 
 				onChange={(p) => p} 
 			/>,
 		resolved: (person, _, update) => 

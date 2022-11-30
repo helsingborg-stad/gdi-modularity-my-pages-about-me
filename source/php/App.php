@@ -18,18 +18,18 @@ class App
             [
                 [
                     'endpoint'      => '%1$s/verify/phone/%2$s',
-                    'verification'   => $_GET['tel'] ?? ''
+                    'verification'  => $_GET['tel'] ?? ''
                 ],
                 [
                     'endpoint'      => '%1$s/verify/email/%2$s',
-                    'verification'   => $_GET['mail'] ?? ''
+                    'verification'  => $_GET['mail'] ?? ''
                 ],
             ],
             fn ($p) => !empty($p['verification'] && $p['endpoint'])
         );
 
         if (
-            home_url($wp->request) !== home_url('verify')
+            home_url($wp->request) !== home_url('/verify')
             || empty($params)
         ) {
             return;
