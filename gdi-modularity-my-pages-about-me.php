@@ -37,7 +37,8 @@ add_action('acf/init', function () {
     $acfExportManager->setTextdomain('gdi-modularity-my-pages-about-me');
     $acfExportManager->setExportFolder(GDI_ABOUT_ME_PATH . 'source/php/AcfFields/');
     $acfExportManager->autoExport(array(
-        'about-me-options' => 'group_637368ed99a9a'
+        'about-me-options'          => 'group_637368ed99a9a',
+        'about-me-module-settings'  => 'group_63872d9248a82',
     ));
     $acfExportManager->import();
 });
