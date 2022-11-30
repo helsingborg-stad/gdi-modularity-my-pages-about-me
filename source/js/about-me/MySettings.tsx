@@ -4,6 +4,7 @@ import PersonEditor from './PersonEditor'
 import useAsync from './UseAsync'
 import './styles.css'
 import { Button } from '../styleguide/components'
+import PhraseContext from '../phrase/PhraseContext'
 
 interface State {
 	person?: Person
@@ -14,7 +15,8 @@ export default (): JSX.Element => {
 	const { getPerson, updatePerson } = useContext(AboutMeContext)
 
 	const inspect = useAsync<Person, State>(getPerson, { isSaving: false })
-	
+	const { phrase } = useContext(PhraseContext)
+
 	return inspect({
 		pending: (state) => 
 			<PersonEditor 
@@ -32,7 +34,7 @@ export default (): JSX.Element => {
 			/>,
 		rejected: (err, state, update) => (
 			<div>
-				<Button onClick={() => update(getPerson(), { isSaving: false })}>Något gick fel, försök igen</Button>
+				<Button onClick={() => update(getPerson(), { isSaving: false })}>{phrase('application_error', 'Något gick fel, försök igen')}</Button>
 			</div>
 		),
 	})

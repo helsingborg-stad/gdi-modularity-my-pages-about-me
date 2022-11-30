@@ -50,7 +50,7 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 						<Field
 							type="email"
 							name="email"
-							label={phrase('email_placeholder', 'Email')}
+							label={phrase('email_label', 'Email')}
 							placeholder={phrase('email_placeholder', 'Email')}
 							value={!editable && !email ? '-' : email}
 							onChange={e => setEmail(e.target.value)}
@@ -66,7 +66,7 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 						<Field
 							type="tel"
 							name="phone"
-							label={phrase('phone_placeholder', 'Phone')}
+							label={phrase('phone_label', 'Phone')}
 							placeholder={phrase('phone_placeholder', 'Phonenumber')}
 							value={!editable && !phone ? '-' : phone}
 							onChange={e => setPhone(e.target.value)}
@@ -95,14 +95,10 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 							</Button>
 						</ShowIf>
 						<ShowIf condition={editable}>
-							<div className="u-margin__bottom--3">
-								<Typography variant="p">
-									{phrase('phone_is_unverified', 'Dina kontaktuppgifter användas endast med förvaltningar och bolag inom Helsingborg Stad och endast när du valt att nyttja en tjänst. Du kan själv ändra dina inställningar när du vill.')}
-								</Typography>
-								<Typography variant="p" className="u-margin__top--2">
-									{phrase('phone_is_unverified', 'När jag sparar mina uppgifter godkänner jag att dessa uppgifter används av Helsingborg Stad. Du hittar information om hur Helsingborgs stad behandlar personuppgifter.')}
-								</Typography>
-							</div>
+							<ShowIf condition={phrase('form_terms', '').length > 0}>
+								<div className="u-margin__bottom--3 contact-details-form-terms" dangerouslySetInnerHTML={{ __html: phrase('form_terms', '') }}>
+								</div>
+							</ShowIf>	
 
 							<Button
 								onClick={() => formRef.current?.reportValidity() && onChange({ email, phoneNumber: phone })}
