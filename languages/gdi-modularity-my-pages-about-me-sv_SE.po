@@ -1,0 +1,213 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GDI Modularity My Pages About Me\n"
+"POT-Creation-Date: 2022-11-30 11:30+0100\n"
+"PO-Revision-Date: 2022-11-30 11:31+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: gdi-modularity-my-pages-about-me.php\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: source/php/AcfFields/php/about-me-module-settings.php:6
+msgid "About Me Module Settings"
+msgstr "Modulinställningar"
+
+#: source/php/AcfFields/php/about-me-module-settings.php:10
+msgid "Form Terms"
+msgstr "Formulärsvillkor"
+
+#: source/php/AcfFields/php/about-me-module-settings.php:29
+msgid "Labels"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:44
+msgid "Email Label"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:63
+msgid "Email Placeholder"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:82
+msgid "Phone Label"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:101
+msgid "Phone Placeholder"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:120
+msgid "Button Cancel"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:139
+msgid "Button Edit"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:158
+msgid "Button Save"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:177
+msgid "Phone is not verified"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:196
+msgid "Email is not verified"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:215
+msgid "Application error"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-options.php:6
+msgid "Plugin: About Me"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-options.php:10
+msgid "About Me API Uri"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-options.php:22
+msgid "http://example/api/v1/aboutme"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-options.php:26
+msgid "Email Verification Redirect Url"
+msgstr "E-postbekräftelse omdirigeringsadress"
+
+#: source/php/AcfFields/php/about-me-options.php:41
+msgid "Phone Verification Redirect Url"
+msgstr "Telefonbekräftelse omdirigeringsadress"
+
+#: source/php/Modules/AboutMe/AboutMe.php:15
+#: source/php/Modules/AboutMe/AboutMe.php:16
+msgid "About Me"
+msgstr ""
+
+#: source/php/Modules/AboutMe/AboutMe.php:17
+msgid "Modularity Module"
+msgstr ""
+
+#: source/php/Modules/AboutMe/AboutMe.php:26
+#: source/php/Modules/AboutMe/AboutMe.php:30
+msgid "Email"
+msgstr "E-post"
+
+#: source/php/Modules/AboutMe/AboutMe.php:28
+msgid "Phone"
+msgstr "Telefon"
+
+#: source/php/Modules/AboutMe/AboutMe.php:32
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: source/php/Modules/AboutMe/AboutMe.php:34
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: source/php/Modules/AboutMe/AboutMe.php:36
+msgid "Save"
+msgstr "Spara"
+
+#: source/php/Modules/AboutMe/AboutMe.php:38
+msgid "Edit"
+msgstr "Ändra"
+
+#: source/php/Modules/AboutMe/AboutMe.php:40
+msgid "Your phone number is not verified."
+msgstr "Ditt telefonnummer är inte verifierat"
+
+#: source/php/Modules/AboutMe/AboutMe.php:42
+msgid "Your email is not verified"
+msgstr "Din e-postadress är inte verifierad"
+
+#: source/php/Modules/AboutMe/AboutMe.php:44
+msgid "Something went wrong, please try again later"
+msgstr "Något gick fel, försök igen"
+
+#. Plugin Name of the plugin/theme
+msgid "GDI Modularity My Pages About Me"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/nramstedt/gdi-modularity-my-pages-about-me"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "About me module"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Nikolas Ramstedt @ Helsingborg Stad"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/helsingborg-stad"
+msgstr ""
+
+#~ msgid "Contact Details Form Terms"
+#~ msgstr "Formulärvillkor för kontaktuppgifter"
+
+#~ msgid "My Pages Protected Page"
+#~ msgstr "Mina sidor: Skyddad sida"
+
+#~ msgid "Protected Page"
+#~ msgstr "Skyddad sida"
+
+#~ msgid "Enabled"
+#~ msgstr "Aktiv"
+
+#~ msgid "Disabled"
+#~ msgstr "Inaktiv"
+
+#~ msgid "My Pages Settings"
+#~ msgstr "Inställningar för Mina sidor"
+
+#~ msgid "Session Length"
+#~ msgstr "Sessionslängd"
+
+#~ msgid "eg. 600 = 10 minutes"
+#~ msgstr "t.ex. 600 = 10 minuter"
+
+#~ msgid "Seconds"
+#~ msgstr "Sekunder"
+
+#~ msgid "My Pages Home URL"
+#~ msgstr "Hemadress för Mina sidor"
+
+#~ msgid "My Pages settings"
+#~ msgstr "Inställningar för Mina sidor"
+
+#~ msgid "My Pages"
+#~ msgstr "Mina Sidor"
+
+#~ msgid "You have been automatically logged out."
+#~ msgstr "Du har loggats ut automatiskt."
+
+#~ msgid "Close"
+#~ msgstr "Stäng"
+
+#~ msgid "My Pages Menu"
+#~ msgstr "Mina sidor meny"
+
+#~ msgid "My Pages: My Account"
+#~ msgstr "Mina sidor: Mitt konto"
+
+#~ msgid "Displays account details for authenticated user"
+#~ msgstr "Visar kontodetaljer för autentiserade användare"
+
+#~ msgid "Login"
+#~ msgstr "Logga in"
