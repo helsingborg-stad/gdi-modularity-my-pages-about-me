@@ -14,18 +14,20 @@ class App
     {
         global $wp;
 
-        $params = array_filter(
-            [
+        $params = array_values(
+            array_filter(
                 [
-                    'endpoint'      => '%1$s/verify/phone/%2$s',
-                    'verification'  => $_GET['tel'] ?? ''
+                    [
+                        'endpoint'      => '%1$s/verify/phone/%2$s',
+                        'verification'  => $_GET['tel'] ?? ''
+                    ],
+                    [
+                        'endpoint'      => '%1$s/verify/email/%2$s',
+                        'verification'  => $_GET['mail'] ?? ''
+                    ],
                 ],
-                [
-                    'endpoint'      => '%1$s/verify/email/%2$s',
-                    'verification'  => $_GET['mail'] ?? ''
-                ],
-            ],
-            fn ($p) => !empty($p['verification'] && $p['endpoint'])
+                fn ($p) => !empty($p['verification'] && $p['endpoint'])
+            )
         );
 
         if (
