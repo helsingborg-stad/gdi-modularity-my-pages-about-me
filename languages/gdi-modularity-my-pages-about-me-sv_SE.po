@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GDI Modularity My Pages About Me\n"
-"POT-Creation-Date: 2022-11-30 11:30+0100\n"
-"PO-Revision-Date: 2022-11-30 11:31+0100\n"
+"POT-Creation-Date: 2022-11-30 11:53+0100\n"
+"PO-Revision-Date: 2022-11-30 11:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -127,7 +127,7 @@ msgid "Edit"
 msgstr "Ändra"
 
 #: source/php/Modules/AboutMe/AboutMe.php:40
-msgid "Your phone number is not verified."
+msgid "Your phone number is not verified"
 msgstr "Ditt telefonnummer är inte verifierat"
 
 #: source/php/Modules/AboutMe/AboutMe.php:42
@@ -157,6 +157,9 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://github.com/helsingborg-stad"
 msgstr ""
+
+#~ msgid "Your phone number is not verified."
+#~ msgstr "Ditt telefonnummer är inte verifierat"
 
 #~ msgid "Contact Details Form Terms"
 #~ msgstr "Formulärvillkor för kontaktuppgifter"

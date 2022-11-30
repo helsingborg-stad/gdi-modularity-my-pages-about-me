@@ -57,7 +57,7 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 							readOnly={!editable}
 							helperText={
 								!editable && email && !person?.email?.isVerified
-									? phrase('email_is_verified', 'Your email is not verified')
+									? phrase('email_is_unverified', 'Your email is not verified')
 									: undefined
 							}
 						/>

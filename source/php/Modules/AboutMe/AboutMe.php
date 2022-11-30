@@ -37,7 +37,7 @@ class AboutMe extends \Modularity\Module
 				'button_edit' 				=> get_field('button_edit', $this->ID)
 					?? __('Edit', GDI_ABOUT_ME_TEXT_DOMAIN),
 				'phone_is_unverified' => get_field('phone_is_unverified', $this->ID)
-					?? __('Your phone number is not verified.', GDI_ABOUT_ME_TEXT_DOMAIN),
+					?? __('Your phone number is not verified', GDI_ABOUT_ME_TEXT_DOMAIN),
 				'email_is_unverified' => get_field('email_is_unverified', $this->ID)
 					?? __('Your email is not verified', GDI_ABOUT_ME_TEXT_DOMAIN),
 				'application_error' 	=> get_field('application_error', $this->ID)
