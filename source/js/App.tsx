@@ -1,16 +1,20 @@
 import MySettings from './about-me/MySettings'
 import AboutMeProvider from './about-me-service/graphql/AboutMeProvider'
+import PhraseProvider from './phrase/PhraseProvider'
 
 interface Props {
 	aboutMeGraphQLUri: string;
+	labels?: Record<string, string>;
 }
 
-function App({ aboutMeGraphQLUri } : Props): JSX.Element {
+function App({ aboutMeGraphQLUri, labels } : Props): JSX.Element {
 	return (
 		<div className="App">
-			<AboutMeProvider uri={aboutMeGraphQLUri}>
-				<MySettings/>
-			</AboutMeProvider>
+			<PhraseProvider phrases={labels}>
+				<AboutMeProvider uri={aboutMeGraphQLUri}>
+					<MySettings />
+				</AboutMeProvider>
+			</PhraseProvider>
 		</div>
 	)
 }
