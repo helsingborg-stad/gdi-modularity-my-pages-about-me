@@ -19,9 +19,24 @@
             "placeholder": "http:\/\/example\/api\/v1\/aboutme"
         },
         {
-            "key": "field_6384a6d06cce7",
-            "label": "After Verification Redirect Url",
-            "name": "about_me_after_verification_redirect_url",
+            "key": "field_6387270615d1c",
+            "label": "Email Verification Redirect Url",
+            "name": "email_verification_redirect_url",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url"
+        },
+        {
+            "key": "field_6387272815d1d",
+            "label": "Phone Verification Redirect Url",
+            "name": "phone_verification_redirect_url",
             "type": "link",
             "instructions": "",
             "required": 0,
