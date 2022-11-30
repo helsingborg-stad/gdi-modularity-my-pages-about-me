@@ -19,11 +19,13 @@ class App
                 [
                     [
                         'endpoint'      => '%1$s/verify/phone/%2$s',
-                        'verification'  => $_GET['tel'] ?? ''
+                        'verification'  => $_GET['tel'] ?? '',
+                        'redirectUrl'   => get_field('email_verification_redirect_url', 'options'),
                     ],
                     [
                         'endpoint'      => '%1$s/verify/email/%2$s',
-                        'verification'  => $_GET['mail'] ?? ''
+                        'verification'  => $_GET['mail'] ?? '',
+                        'redirectUrl'   => get_field('phone_verification_redirect_url', 'options'),
                     ],
                 ],
                 fn ($p) => !empty($p['verification'] && $p['endpoint'])
@@ -55,7 +57,7 @@ class App
         $response = json_decode($request, true);
 
         if (!empty($response['verified'])) {
-            wp_redirect(get_field('about_me_after_verification_redirect_url', 'options') ?? home_url());
+            wp_redirect($params[0]['redirectUrl'] ?? home_url());
             exit();
         }
     }
