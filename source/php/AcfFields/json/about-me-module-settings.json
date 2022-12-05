@@ -51,7 +51,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "placeholder": "Email",
                     "prepend": "",
                     "append": ""
                 },
@@ -70,7 +70,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "placeholder": "Email",
                     "prepend": "",
                     "append": ""
                 },
@@ -89,7 +89,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "placeholder": "Phone",
                     "prepend": "",
                     "append": ""
                 },
@@ -108,7 +108,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "placeholder": "Phone number",
                     "prepend": "",
                     "append": ""
                 },
@@ -127,7 +127,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "placeholder": "Cancel",
                     "prepend": "",
                     "append": ""
                 },
@@ -146,7 +146,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "placeholder": "Edit",
                     "prepend": "",
                     "append": ""
                 },
@@ -165,7 +165,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "placeholder": "Save",
                     "prepend": "",
                     "append": ""
                 },
@@ -184,7 +184,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "placeholder": "Your phone number is not verified.",
                     "prepend": "",
                     "append": ""
                 },
@@ -203,7 +203,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "placeholder": "Your email is not verified.",
                     "prepend": "",
                     "append": ""
                 },
@@ -222,7 +222,83 @@
                     },
                     "default_value": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "placeholder": "Something went wrong, please try again later",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_638dc6d7065a6",
+                    "label": "Resend Verification SMS",
+                    "name": "resend_verification_sms",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "Resend SMS",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_638dc6f2065a7",
+                    "label": "Sent Verification SMS",
+                    "name": "sent_verification_sms",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "Sent SMS to {phone}",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_638dc70c065a9",
+                    "label": "Resend Verification Email",
+                    "name": "resend_verification_email",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "Resend mail",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_638dc70d065aa",
+                    "label": "Sent Verification Email",
+                    "name": "sent_verification_email",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "Sent mail to {email}",
                     "prepend": "",
                     "append": ""
                 }
