@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GDI Modularity My Pages About Me\n"
-"POT-Creation-Date: 2022-11-30 11:53+0100\n"
-"PO-Revision-Date: 2022-11-30 11:53+0100\n"
+"POT-Creation-Date: 2022-12-05 11:30+0100\n"
+"PO-Revision-Date: 2022-12-05 11:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -36,6 +36,13 @@ msgstr ""
 msgid "Email Label"
 msgstr ""
 
+#: source/php/AcfFields/php/about-me-module-settings.php:57
+#: source/php/AcfFields/php/about-me-module-settings.php:76
+#: source/php/Modules/AboutMe/AboutMe.php:26
+#: source/php/Modules/AboutMe/AboutMe.php:30
+msgid "Email"
+msgstr "E-post"
+
 #: source/php/AcfFields/php/about-me-module-settings.php:63
 msgid "Email Placeholder"
 msgstr ""
@@ -44,33 +51,109 @@ msgstr ""
 msgid "Phone Label"
 msgstr ""
 
+#: source/php/AcfFields/php/about-me-module-settings.php:95
+#: source/php/Modules/AboutMe/AboutMe.php:28
+msgid "Phone"
+msgstr "Telefon"
+
 #: source/php/AcfFields/php/about-me-module-settings.php:101
 msgid "Phone Placeholder"
 msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:114
+#: source/php/Modules/AboutMe/AboutMe.php:32
+msgid "Phone number"
+msgstr "Telefonnummer"
 
 #: source/php/AcfFields/php/about-me-module-settings.php:120
 msgid "Button Cancel"
 msgstr ""
 
+#: source/php/AcfFields/php/about-me-module-settings.php:133
+#: source/php/Modules/AboutMe/AboutMe.php:34
+msgid "Cancel"
+msgstr "Avbryt"
+
 #: source/php/AcfFields/php/about-me-module-settings.php:139
 msgid "Button Edit"
 msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:152
+#: source/php/Modules/AboutMe/AboutMe.php:38
+msgid "Edit"
+msgstr "Ändra"
 
 #: source/php/AcfFields/php/about-me-module-settings.php:158
 msgid "Button Save"
 msgstr ""
 
+#: source/php/AcfFields/php/about-me-module-settings.php:171
+#: source/php/Modules/AboutMe/AboutMe.php:36
+msgid "Save"
+msgstr "Spara"
+
 #: source/php/AcfFields/php/about-me-module-settings.php:177
 msgid "Phone is not verified"
 msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:190
+#: source/php/Modules/AboutMe/AboutMe.php:40
+msgid "Your phone number is not verified."
+msgstr "Ditt telefonnummer är inte verifierat"
 
 #: source/php/AcfFields/php/about-me-module-settings.php:196
 msgid "Email is not verified"
 msgstr ""
 
+#: source/php/AcfFields/php/about-me-module-settings.php:209
+#: source/php/Modules/AboutMe/AboutMe.php:42
+msgid "Your email is not verified."
+msgstr "Din e-postadress är inte verifierad."
+
 #: source/php/AcfFields/php/about-me-module-settings.php:215
 msgid "Application error"
 msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:228
+#: source/php/Modules/AboutMe/AboutMe.php:44
+msgid "Something went wrong, please try again later"
+msgstr "Något gick fel, försök igen"
+
+#: source/php/AcfFields/php/about-me-module-settings.php:234
+msgid "Resend Verification SMS"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:247
+#: source/php/Modules/AboutMe/AboutMe.php:47
+msgid "Resend SMS"
+msgstr "Skicka igen"
+
+#: source/php/AcfFields/php/about-me-module-settings.php:253
+msgid "Sent Verification SMS"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:266
+#: source/php/Modules/AboutMe/AboutMe.php:49
+msgid "Sent SMS to {phone}"
+msgstr "SMS skickat till {phone}"
+
+#: source/php/AcfFields/php/about-me-module-settings.php:272
+msgid "Resend Verification Email"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:285
+#: source/php/Modules/AboutMe/AboutMe.php:51
+msgid "Resend mail"
+msgstr "Skicka igen"
+
+#: source/php/AcfFields/php/about-me-module-settings.php:291
+msgid "Sent Verification Email"
+msgstr ""
+
+#: source/php/AcfFields/php/about-me-module-settings.php:304
+#: source/php/Modules/AboutMe/AboutMe.php:53
+msgid "Sent mail to {email}"
+msgstr "Mail skickat till {email}"
 
 #: source/php/AcfFields/php/about-me-options.php:6
 msgid "Plugin: About Me"
@@ -101,43 +184,6 @@ msgstr ""
 msgid "Modularity Module"
 msgstr ""
 
-#: source/php/Modules/AboutMe/AboutMe.php:26
-#: source/php/Modules/AboutMe/AboutMe.php:30
-msgid "Email"
-msgstr "E-post"
-
-#: source/php/Modules/AboutMe/AboutMe.php:28
-msgid "Phone"
-msgstr "Telefon"
-
-#: source/php/Modules/AboutMe/AboutMe.php:32
-msgid "Phone number"
-msgstr "Telefonnummer"
-
-#: source/php/Modules/AboutMe/AboutMe.php:34
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: source/php/Modules/AboutMe/AboutMe.php:36
-msgid "Save"
-msgstr "Spara"
-
-#: source/php/Modules/AboutMe/AboutMe.php:38
-msgid "Edit"
-msgstr "Ändra"
-
-#: source/php/Modules/AboutMe/AboutMe.php:40
-msgid "Your phone number is not verified"
-msgstr "Ditt telefonnummer är inte verifierat"
-
-#: source/php/Modules/AboutMe/AboutMe.php:42
-msgid "Your email is not verified"
-msgstr "Din e-postadress är inte verifierad"
-
-#: source/php/Modules/AboutMe/AboutMe.php:44
-msgid "Something went wrong, please try again later"
-msgstr "Något gick fel, försök igen"
-
 #. Plugin Name of the plugin/theme
 msgid "GDI Modularity My Pages About Me"
 msgstr ""
@@ -158,8 +204,11 @@ msgstr ""
 msgid "https://github.com/helsingborg-stad"
 msgstr ""
 
-#~ msgid "Your phone number is not verified."
+#~ msgid "Your phone number is not verified"
 #~ msgstr "Ditt telefonnummer är inte verifierat"
+
+#~ msgid "Your email is not verified"
+#~ msgstr "Din e-postadress är inte verifierad"
 
 #~ msgid "Contact Details Form Terms"
 #~ msgstr "Formulärvillkor för kontaktuppgifter"
