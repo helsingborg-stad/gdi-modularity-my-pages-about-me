@@ -3,15 +3,15 @@ import AboutMeProvider from './about-me-service/graphql/AboutMeProvider'
 import PhraseProvider from './phrase/PhraseProvider'
 
 interface Props {
-	aboutMeGraphQLUri: string;
+	aboutMeApiUri: string;
 	labels?: Record<string, string>;
 }
 
-function App({ aboutMeGraphQLUri, labels } : Props): JSX.Element {
+function App({ aboutMeApiUri, labels } : Props): JSX.Element {
 	return (
 		<div className="App">
 			<PhraseProvider phrases={labels}>
-				<AboutMeProvider uri={aboutMeGraphQLUri}>
+				<AboutMeProvider uri={aboutMeApiUri}>
 					<MySettings />
 				</AboutMeProvider>
 			</PhraseProvider>

@@ -45,11 +45,18 @@ const mutateMe = `
 
 const gql = (uri: string, query: string, variables: object, headers: object) => axios({
 	method: 'post',
-	url: `${uri}`,
+	url: `${uri}/graphql`,
 	data: {
 		query,
 		variables,
 	},
+	headers,
+})
+
+const post = (uri: string, data: object = {}, headers: object = {}) => axios({
+	method: 'post',
+	url: `${uri}`,
+	data,
 	headers,
 })
 
@@ -69,4 +76,9 @@ export const createGqlContext = (uri: string): AboutMeContextType => ({
 		tryGetAuthorizationHeaders()
 			.then(headers => gql(uri, mutateMe, { me: input }, headers))
 			.then(response => response.data?.data?.updateMe),
+	sendVerificationLink: (type) =>
+		tryGetAuthorizationHeaders()
+			.then(headers => {
+				post(`${uri}/send-verification-notification/${type}`, {}, headers)
+			}),
 })

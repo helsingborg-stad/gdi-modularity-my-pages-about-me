@@ -20,29 +20,37 @@ class AboutMe extends \Modularity\Module
 	public function data(): array
 	{
 		return [
-			'aboutMeGraphQLUri' => get_field('about_me_api_uri', 'options') . '/graphql',
+			'aboutMeApiUri' => get_field('about_me_api_uri', 'options'),
 			'labels' => [
-				'email_label' 				=> get_field('email_label', $this->ID)
+				'email_label' 							=> get_field('email_label', $this->ID)
 					?? __('Email', GDI_ABOUT_ME_TEXT_DOMAIN),
-				'phone_label' 				=> get_field('phone_label', $this->ID)
+				'phone_label' 							=> get_field('phone_label', $this->ID)
 					?? __('Phone', GDI_ABOUT_ME_TEXT_DOMAIN),
-				'email_placeholder' 	=> get_field('email_placeholder', $this->ID)
+				'email_placeholder' 				=> get_field('email_placeholder', $this->ID)
 					?? __('Email', GDI_ABOUT_ME_TEXT_DOMAIN),
-				'phone_placeholder' 	=> get_field('phone_placeholder', $this->ID)
+				'phone_placeholder' 				=> get_field('phone_placeholder', $this->ID)
 					?? __('Phone number', GDI_ABOUT_ME_TEXT_DOMAIN),
-				'button_cancel' 			=> get_field('button_cancel', $this->ID)
+				'button_cancel' 						=> get_field('button_cancel', $this->ID)
 					?? __('Cancel', GDI_ABOUT_ME_TEXT_DOMAIN),
-				'button_save' 				=> get_field('button_save', $this->ID)
+				'button_save' 							=> get_field('button_save', $this->ID)
 					?? __('Save', GDI_ABOUT_ME_TEXT_DOMAIN),
-				'button_edit' 				=> get_field('button_edit', $this->ID)
+				'button_edit' 							=> get_field('button_edit', $this->ID)
 					?? __('Edit', GDI_ABOUT_ME_TEXT_DOMAIN),
-				'phone_is_unverified' => get_field('phone_is_unverified', $this->ID)
-					?? __('Your phone number is not verified', GDI_ABOUT_ME_TEXT_DOMAIN),
-				'email_is_unverified' => get_field('email_is_unverified', $this->ID)
-					?? __('Your email is not verified', GDI_ABOUT_ME_TEXT_DOMAIN),
-				'application_error' 	=> get_field('application_error', $this->ID)
+				'phone_is_unverified' 			=> get_field('phone_is_unverified', $this->ID)
+					?? __('Your phone number is not verified.', GDI_ABOUT_ME_TEXT_DOMAIN),
+				'email_is_unverified' 			=> get_field('email_is_unverified', $this->ID)
+					?? __('Your email is not verified.', GDI_ABOUT_ME_TEXT_DOMAIN),
+				'application_error' 				=> get_field('application_error', $this->ID)
 					?? __('Something went wrong, please try again later', GDI_ABOUT_ME_TEXT_DOMAIN),
-				'form_terms' 					=> get_field('form_terms', $this->ID) ?? '',
+				'form_terms' 								=> get_field('form_terms', $this->ID) ?? '',
+				'resend_verification_sms' 	=> get_field('resend_verification_sms', $this->ID)
+					?? __('Resend SMS', GDI_ABOUT_ME_TEXT_DOMAIN),
+				'sent_verification_sms' 		=> get_field('sent_verification_sms', $this->ID)
+					?? __('Sent SMS to {phone}', GDI_ABOUT_ME_TEXT_DOMAIN),
+				'resend_verification_email' 	=> get_field('resend_verification_email', $this->ID)
+					?? __('Resend mail', GDI_ABOUT_ME_TEXT_DOMAIN),
+				'sent_verification_email' 	=> get_field('sent_verification_email', $this->ID)
+					?? __('Sent mail to {email}', GDI_ABOUT_ME_TEXT_DOMAIN),
 			],
 		];
 	}

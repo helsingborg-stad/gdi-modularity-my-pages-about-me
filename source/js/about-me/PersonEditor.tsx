@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material'
 import { useContext, useRef, useState } from 'react'
-import { Person, PersonInput } from '../about-me-service/AboutMeContext'
+import AboutMeContext, { Person, PersonInput } from '../about-me-service/AboutMeContext'
 import PhraseContext from '../phrase/PhraseContext'
 import {
 	Button,
@@ -26,8 +26,12 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 	const [ editable, setEditable ] = useState<boolean>(false)
 	const [ email, setEmail ] = useState(person?.email?.address || '')
 	const [ phone, setPhone ] = useState(person?.phone?.number || '')
+	
+	const [ resentEmail, setResentEmail ] = useState(false)
+	const [ resentSms, setResentSms ] = useState(false)
 
 	const { phrase } = useContext(PhraseContext)
+	const { sendVerificationLink } = useContext(AboutMeContext)
 
 	return (
 		<form ref={formRef}>
@@ -57,7 +61,21 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 							readOnly={!editable}
 							helperText={
 								!editable && email && !person?.email?.isVerified
-									? phrase('email_is_unverified', 'Your email is not verified')
+									? (
+										<Typography>
+											{phrase('email_is_unverified', 'Your email is not verified.') + ' '}
+											<ShowIf condition={!resentEmail}>
+												<a href="#" role="button" onClick={(e) => {
+													e.preventDefault()
+													setResentEmail(true)
+													sendVerificationLink('email')
+												}}>{phrase('resend_verification_email', 'Resend mail')}</a>
+											</ShowIf>
+											<ShowIf condition={resentEmail}>
+												<a>{phrase('sent_verification_email', 'Sent mail to {email}').replace('{email}', email)}</a>
+											</ShowIf>
+										</Typography>
+									)
 									: undefined
 							}
 						/>
@@ -73,7 +91,21 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 							readOnly={!editable}
 							helperText={
 								!editable && phone && !person?.phone?.isVerified
-									? phrase('phone_is_unverified', 'Your phone number is not verified.')
+									? (
+										<Typography>
+											{phrase('phone_is_unverified', 'Your phone number is not verified.') + ' '}
+											<ShowIf condition={!resentSms}>
+												<a href="#" role="button" onClick={(e) => {
+													e.preventDefault()
+													setResentSms(true)
+													sendVerificationLink('phone')
+												}}>{phrase('resend_verification_sms', 'Resend SMS')}</a>
+											</ShowIf>
+											<ShowIf condition={resentSms}>
+												<a>{phrase('sent_verification_sms', 'Sent SMS to {phone}').replace('{phone}', phone)}</a>
+											</ShowIf>
+										</Typography>
+									)
 									: undefined
 							}
 							inputProps={{

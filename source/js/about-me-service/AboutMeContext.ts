@@ -26,14 +26,17 @@ export interface Person {
 
 export interface AboutMeContextType {
 	getPerson: () => Promise<Person>,
-	updatePerson: (input: PersonInput) => Promise<Person>
+	updatePerson: (input: PersonInput) => Promise<Person>,
+	sendVerificationLink: (type: 'email' | 'phone') => Promise<void>,
 }
+
 
 const notImplemented = () => { throw new Error('not implemented') }
 
 const AboutMeContext = React.createContext<AboutMeContextType>({
 	getPerson: notImplemented,
 	updatePerson: notImplemented,
+	sendVerificationLink: notImplemented,
 })
 
 export default AboutMeContext

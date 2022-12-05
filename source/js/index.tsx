@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded',
 		[...document.querySelectorAll('.js-gdi-modularity-about-me')]
 			.map(e => ({
 				root: ReactDOM.createRoot(e as HTMLElement),
-				aboutMeGraphQLUri: e.getAttribute('data-about-me-graphql-uri') ?? '',
+				aboutMeApiUri: e.getAttribute('data-about-me-api-uri') ?? '',
 				labels: JSON.parse(e.getAttribute('data-labels') ?? '{}'),
 			}))
-			.filter(({ aboutMeGraphQLUri }) => aboutMeGraphQLUri.length > 0)
-			.forEach(({ root, aboutMeGraphQLUri, labels }) => {
+			.filter(({ aboutMeApiUri }) => aboutMeApiUri.length > 0)
+			.forEach(({ root, aboutMeApiUri, labels }) => {
 				root.render(
 					<React.StrictMode>
-						<App {...{ aboutMeGraphQLUri, labels }} />
+						<App {...{ aboutMeApiUri, labels }} />
 					</React.StrictMode>
 				)
 			})
