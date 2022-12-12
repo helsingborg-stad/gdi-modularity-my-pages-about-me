@@ -2,6 +2,7 @@
 import React, { ChangeEventHandler, FocusEventHandler, HTMLInputTypeAttribute } from 'react'
 
 interface Props {
+	forwardRef?: React.RefObject<HTMLInputElement>,
 	value: string
 	name: string
 	label?: string
@@ -19,6 +20,7 @@ interface Props {
 }
 
 const Field = ({
+	forwardRef,
 	value,
 	onChange,
 	onBlur,
@@ -54,6 +56,7 @@ const Field = ({
 			)}
 			<div className="c-field__inner">
 				<input
+					ref={forwardRef}
 					id={name}
 					aria-label={label}
 					aria-required={required ? 'true' : 'false'}

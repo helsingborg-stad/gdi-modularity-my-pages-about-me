@@ -11,10 +11,10 @@ export interface AsyncView<TData, TState, TView> {
 export type AsyncInspect<TData, TState> = <TView>(view: AsyncView<TData, TState, TView>) => TView
 
 export default function useAsync<TData, TState = any>(getData: Func<TData>, initialState?: TState): AsyncInspect<TData, TState> {
-	const [state, setState] = useState<'dormant' | 'pending' | 'resolved' | 'rejected'>('dormant')
-	const [userState, setUserState] = useState<TState | undefined>(initialState)
-	const [data, setData] = useState<TData | null>(null)
-	const [error, setError] = useState<Error | null>(null)
+	const [ state, setState ] = useState<'dormant' | 'pending' | 'resolved' | 'rejected'>('dormant')
+	const [ userState, setUserState ] = useState<TState | undefined>(initialState)
+	const [ data, setData ] = useState<TData | null>(null)
+	const [ error, setError ] = useState<Error | null>(null)
 
 	const setPending = (p: Promise<TData>) => {
 		setState('pending')

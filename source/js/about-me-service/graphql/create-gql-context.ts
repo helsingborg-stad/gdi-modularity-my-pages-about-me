@@ -43,6 +43,15 @@ const mutateMe = `
 	}
 `
 
+const mutateValidateUpdatePerson = `
+	mutation validateUpdateMe($me: PersonInput!) {
+		validateUpdateMe(me: $me) {
+			email
+			phoneNumber
+		}
+	}
+`
+
 const gql = (uri: string, query: string, variables: object, headers: object) => axios({
 	method: 'post',
 	url: `${uri}/graphql`,
@@ -75,7 +84,10 @@ export const createGqlContext = (uri: string): AboutMeContextType => ({
 	updatePerson: (input) =>
 		tryGetAuthorizationHeaders()
 			.then(headers => gql(uri, mutateMe, { me: input }, headers))
-			.then(response => response.data?.data?.updateMe),
+			.then(response => ({
+				person: response.data?.data?.updateMe,
+				errorField: response?.data?.errors?.map((e: any) => e?.extensions?.['validation-failed-for-field']).filter((f: string) => f)[0] || null,
+			})),
 	sendVerificationLink: (type) =>
 		tryGetAuthorizationHeaders()
 			.then(headers => {

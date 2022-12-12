@@ -24,9 +24,19 @@ export interface Person {
 	phone?: PersonPhone
 }
 
+export interface UpdatePersonValidationResult {
+	email: boolean
+	phoneNumber: boolean
+}
+
+export interface UpdatePersonResult {
+	person: Person,
+	errorField: 'email'|'phoneNumber'|null
+}
+
 export interface AboutMeContextType {
 	getPerson: () => Promise<Person>,
-	updatePerson: (input: PersonInput) => Promise<Person>,
+	updatePerson: (input: PersonInput) => Promise<UpdatePersonResult>,
 	sendVerificationLink: (type: 'email' | 'phone') => Promise<void>,
 }
 

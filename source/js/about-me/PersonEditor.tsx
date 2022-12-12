@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material'
-import { useContext, useRef, useState } from 'react'
-import AboutMeContext, { Person, PersonInput } from '../about-me-service/AboutMeContext'
+import { RefObject, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import AboutMeContext, { Person, PersonInput, UpdatePersonValidationResult } from '../about-me-service/AboutMeContext'
 import PhraseContext from '../phrase/PhraseContext'
 import {
 	Button,
@@ -12,26 +12,50 @@ import { CollectionItemWithIcon } from './CollectionItemWithIcon'
 import { CollectionWithCard } from './CollectionWithCard'
 
 export type PersonEditorProps = {
-	person?: Person;
-	hasBeenSaved?: boolean;
-	onChange: (input: PersonInput) => void;
-	onCancel: () => void;
-};
+	person?: Person	// for displaying info
+	input?: PersonInput	// editable email/phone
+	errorField?: 'email'|'phoneNumber'|null	// indication of validationError in last save
+	showEditor?: boolean	// start in edit mode? (as a response to validation error...)
+	hasBeenSaved?: boolean
+	onChange: (input: PersonInput) => void
+	onCancel: () => void
+	onError?: (e: Error) => void 
+}
 
-const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.Element => {
+const PersonEditor = ({ input, person, errorField, showEditor, onChange, onCancel }: PersonEditorProps): JSX.Element => {
 	const { firstName, lastName, id } = person || { firstName: '', lastName: '', id: '' }
 
 	const formRef = useRef<HTMLFormElement>(null)
+	const emailRef = useRef<HTMLInputElement>(null)
+	const phoneRef = useRef<HTMLInputElement>(null)
 	
-	const [ editable, setEditable ] = useState<boolean>(false)
-	const [ email, setEmail ] = useState(person?.email?.address || '')
-	const [ phone, setPhone ] = useState(person?.phone?.number || '')
+	const [ editable, setEditable ] = useState<boolean>(showEditor || false)
+	const [ email, setEmail ] = useState(input?.email || '')
+	const [ phone, setPhone ] = useState(input?.phoneNumber || '')
+	const [ didValidate, setDidValidate ] = useState(false)
 	
 	const [ resentEmail, setResentEmail ] = useState(false)
 	const [ resentSms, setResentSms ] = useState(false)
 
 	const { phrase } = useContext(PhraseContext)
 	const { sendVerificationLink } = useContext(AboutMeContext)
+
+	const validateInputFor = useCallback((isInvalid: boolean, ref: RefObject<HTMLInputElement>, validationMessage: string) => {
+		if (isInvalid) {
+			ref.current?.setCustomValidity(validationMessage)
+			ref.current?.setAttribute('aria-invalid', 'true')
+			ref.current?.reportValidity()
+		}
+		return true
+	}, [])
+
+	useEffect(() => {
+		if (!didValidate) {
+			validateInputFor(errorField === 'email', emailRef, phrase('email_validation', 'Vänligen ange en giltig e-postadress')) 
+			validateInputFor(errorField === 'phoneNumber', phoneRef, phrase('phone_validation', 'Vänligen ange ett giltigt telefonnummer'))
+			setDidValidate(true)
+		}
+	}, [])
 
 	return (
 		<form ref={formRef}>
@@ -52,6 +76,7 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 				<CollectionWithCard>
 					<CollectionItemWithIcon icon={'email'}>
 						<Field
+							forwardRef={emailRef}
 							type="email"
 							name="email"
 							label={phrase('email_label', 'Email')}
@@ -82,6 +107,7 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 					</CollectionItemWithIcon>
 					<CollectionItemWithIcon icon={'phone'}>
 						<Field
+							forwardRef={phoneRef}
 							type="tel"
 							name="phone"
 							label={phrase('phone_label', 'Phone')}
@@ -109,7 +135,7 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 									: undefined
 							}
 							inputProps={{
-								pattern: '\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}',
+								//pattern: '\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}',
 							}}
 						/>
 					</CollectionItemWithIcon>
@@ -133,7 +159,9 @@ const PersonEditor = ({ person, onChange, onCancel }: PersonEditorProps): JSX.El
 							</ShowIf>	
 
 							<Button
-								onClick={() => formRef.current?.reportValidity() && onChange({ email, phoneNumber: phone })}
+								onClick={async () => {
+									onChange({ email, phoneNumber: phone })
+								}}
 								color="primary"
 								type="submit"
 								aria-label={phrase('button_save', 'Save')}
