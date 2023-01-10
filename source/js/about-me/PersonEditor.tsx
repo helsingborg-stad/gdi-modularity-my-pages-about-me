@@ -135,7 +135,7 @@ const PersonEditor = ({ input, person, errorField, showEditor, onChange, onCance
 									: undefined
 							}
 							inputProps={{
-								//pattern: '\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}',
+								pattern: '\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}',
 							}}
 						/>
 					</CollectionItemWithIcon>
@@ -160,7 +160,7 @@ const PersonEditor = ({ input, person, errorField, showEditor, onChange, onCance
 
 							<Button
 								onClick={async () => {
-									onChange({ email, phoneNumber: phone })
+									formRef.current?.reportValidity() && onChange({ email, phoneNumber: phone })
 								}}
 								color="primary"
 								type="submit"
