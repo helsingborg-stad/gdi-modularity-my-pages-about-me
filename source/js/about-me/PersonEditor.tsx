@@ -1,6 +1,6 @@
 import { Stack } from '@mui/material'
 import { RefObject, useCallback, useContext, useEffect, useRef, useState } from 'react'
-import AboutMeContext, { Person, PersonInput, UpdatePersonValidationResult } from '../about-me-service/AboutMeContext'
+import AboutMeContext, { Person, PersonInput } from '../about-me-service/AboutMeContext'
 import PhraseContext from '../phrase/PhraseContext'
 import {
 	Button,
