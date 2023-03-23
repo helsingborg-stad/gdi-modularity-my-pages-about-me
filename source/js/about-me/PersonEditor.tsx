@@ -69,7 +69,7 @@ const PersonEditor = ({ input, person, errorField, showEditor, onChange, onCance
 							{firstName} {lastName}
 						</Typography>
 						<Typography variant={'p'}>
-							{id}
+							{id.length && id.length === 12 ? [ id.slice(0, 8), '-', id.slice(8) ].join('') : id}
 						</Typography>
 					</CollectionItemWithIcon>
 				</CollectionWithCard>
