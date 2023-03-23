@@ -10,7 +10,7 @@ export const CollectionItemWithIcon = ({ icon, children }: { icon?: string; chil
 	<CollectionItem>
 		<CollectionIcon className="c-collection__icon u-display--none@xs">
 			<Icon name={icon ?? 'email'} size={'lg'} style={{
-				color: 'var(--color-complementary, #f0dbd9)',
+				color: 'var(--color-primary, #76232f)',
 				width: '40px',
 				visibility: icon ? 'visible' : 'hidden',
 			}} />
