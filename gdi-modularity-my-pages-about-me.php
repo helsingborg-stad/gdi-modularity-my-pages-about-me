@@ -4,7 +4,7 @@
  * Plugin Name:       GDI Modularity My Pages About Me
  * Plugin URI:        https://github.com/nramstedt/gdi-modularity-my-pages-about-me
  * Description:       About me module
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author:            Nikolas Ramstedt @ Helsingborg Stad
  * Author URI:        https://github.com/helsingborg-stad
  * License:           MIT
