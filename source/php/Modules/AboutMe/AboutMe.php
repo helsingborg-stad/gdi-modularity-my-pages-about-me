@@ -15,7 +15,7 @@ class AboutMe extends \Modularity\Module
 		$this->nameSingular = __('About Me', GDI_ABOUT_ME_TEXT_DOMAIN);
 		$this->namePlural = __('About Me', GDI_ABOUT_ME_TEXT_DOMAIN);
 		$this->description = __('Modularity Module', GDI_ABOUT_ME_TEXT_DOMAIN);
-		$this->ttl = false;
+		$this->cacheTtl = false;
 	}
 
 	public function data(): array
