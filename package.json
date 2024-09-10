@@ -1,6 +1,6 @@
 {
     "name": "@helsingborg-stad/gdi-modularity-my-pages-about-me",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "devDependencies": {
         "@babel/core": "^7.18.10",
         "@babel/preset-env": "^7.18.10",
@@ -74,7 +74,9 @@
         "> 1%",
         "not dead"
     ],
-    "files": ["dist/"],
+    "files": [
+        "dist/"
+    ],
     "browser": {
         "child_process": false
     },
