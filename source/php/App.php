@@ -6,7 +6,7 @@ class App
 {
     public function __construct()
     {
-        add_action('plugins_loaded', array($this, 'registerModules'));
+        add_action('init', array($this, 'registerModules'));
         add_action('template_redirect', array($this, 'verifyContactDetails'));
     }
 
