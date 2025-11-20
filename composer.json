@@ -25,6 +25,5 @@
         "brain/monkey": "^2.6",
         "codedungeon/phpunit-result-printer": "^0.31.0",
         "phpunit/phpunit": "^9.5"
-    },
-    "version": "2.0.0"
+    }
 }
